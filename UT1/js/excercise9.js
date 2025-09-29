@@ -18,6 +18,7 @@
             console.log('La división es: ' + (num1/num2));
             break;
         default:
+            console.log('Ha introducido una opción inválida.')
     }
 
 }

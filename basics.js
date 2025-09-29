@@ -378,5 +378,117 @@
         return 'XXX';
     };
     s4(10, 20); //OUTPUT: 10 \n 20
-    console.log(s4('Hola', 'Adios')); //OUTPUT: XXX 
+    console.log(s4('Hola', 'Adios')); //OUTPUT: XXX
+    
+    
+
+    //RECURSIVE FUNCTIONS
+    //WE CREATE A RECURSIVE FUNCTION THEN WE DO OUR OBJECTIVE
+    function cuentaAtras (numero) {
+        //BASE CASE
+        if (numero === 0) {
+            return;
+        }
+        //RECURSIVE CASE
+        console.log(numero);
+        //EVERYTIME WE RETURN cuentaAtras - 1 BEFORE WE REACH 1.
+        cuentaAtras(numero - 1);
+    };
+    console.log(cuentaAtras(5));
+
+    //WE CREATE A RECURSIVE FUNCTION FOR SAYING IF A NUMBER IS EVEN OR ODD
+    function parImpar (numero) {
+        if (numero === 0) {
+            //IF THE NUMBER ES EQUAL T0 0 WE SAY THAT IS EVEN
+            return 'Par';
+        } else if (numero === 1) {
+            //IF IS EQUAL TO 1 WE SAY ITS ODD
+            return 'Impar';
+        } else {
+            //WE QUIT 2 TO THE NUMNER EVERY LAP OF THE FUNCTION
+            return parImpar(numero - 2);
+        }
+    };
+    console.log(parImpar(20)) // EVEN
+    console.log(parImpar(75)) // ODD
+    console.log(parImpar(98)) // EVEN
+    console.log(parImpar(113)) // ODD
+
+    //THE SAME BUT WE PUT IT IN A VAR
+    let parImpar = function (numero) {
+        if (numero === 0) {
+            //IF THE NUMBER ES EQUAL T0 0 WE SAY THAT IS EVEN
+            return 'EVEN';
+        } else if (numero === 1) {
+            //IF IS EQUAL TO 1 WE SAY ITS ODD
+            return 'ODD';
+        } else {
+            //WE QUIT 2 TO THE NUMNER EVERY LAP OF THE FUNCTION
+            return parImpar(numero - 2);
+        }
+    };
+    console.log(parImpar(20)) // EVEN
+    console.log(parImpar(75)) // ODD
+    console.log(parImpar(98)) // EVEN
+    console.log(parImpar(113)) // ODD
+    
+    //THE SAME BUT WE PUT IT IN AN ARROW FUNCTION
+    let parImpar = (numero) => {
+        if (numero === 0) {
+            //IF THE NUMBER ES EQUAL T0 0 WE SAY THAT IS EVEN
+            return 'EVEN';
+        } else if (numero === 1) {
+            //IF IS EQUAL TO 1 WE SAY ITS ODD
+            return 'ODD';
+        } else {
+            //WE QUIT 2 TO THE NUMNER EVERY LAP OF THE FUNCTION
+            return parImpar(numero - 2);
+        }
+    };
+    console.log(parImpar(20)) // EVEN
+    console.log(parImpar(75)) // ODD
+    console.log(parImpar(98)) // EVEN
+    console.log(parImpar(113)) // ODD
+
+    //WE CREATE A RECURSIVE FUNCTION FOR COUNT NUMBER BETWEEN A MINIMUM AND MAXIMUM
+    function countUp (min, max) {
+        //BASE CASE
+        if (min === max) {
+            console.log(max);
+        } else {
+            //RECURSIVE CASE
+            console.log(min);
+            countUp(min+1, max);
+        }
+    }
+
+    countUp(1, 10);
+
+    //WE CREATE A RECURSIVE ARROW FUNCTION
+    let countDown2 = (n) => {
+        if (n === 1) {
+            //BASE CASE
+            console.log(1);
+        } else  {
+            //RECURSIVE CASE
+            console.log(n);
+            countDown2(n-1);
+        }
+    }
+
+
+
+    //STRING CLASS
+    cadena=cadena.metodoQueDevuelveUnaModificacion(); /* FOR MODIFY 
+    THE SAME CHAIN DIRECTLY*/
+    toLowerCase()/toUpperCase() //FOR RETURN THE CHAIN IN SMALL LETTERS OR CAPITAL LETTERS
+    concat(cadena) //FOR PUT TWO DIFFERENT CHAINS ON THE SAME VAR
+    charAt(posicion) //RETURN ONE CHARACTER AT THAT POSITION
+    indexOf(texto, [indice]) //SEARCH TEXT STARTING AT THE END IF WE NOT SPECIFY ONE INDEX.
+    replace(texto1,texto2) //IT REPLACES TEXT1 FOR TEXT2 ON THE SAME STRING
+    split(caracter) //IT MAKE SPACES BETWEEN EACH CHARACTER OF THE STRING. IT IS RETURNED IN AN ARRAY
+    substring(inicio, [fin]) //IT RETURNS ANOTHER CHAIN BETWEEN THE 2 NUMBERS (INDEXS) SPECIFIED.
+    includes(texto) //IT RETURNS TRUE OR FALSE IF OUR CHAIN HAVE 'TEXTO'.
+    trim () //IT DELETES ALL WHITE SPACES OF THE CHAIN
+    match() //IT RETURNS ALL OCURRENCES OF THE CHAIN OF A REGULAR EXPRESSION
 }
