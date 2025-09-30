@@ -1,8 +1,8 @@
 "use strict"
 {
-    function miFuncion(chain, separatorCharacter)     {
+    function myFunction(chain, separatorCharacter)     {
         return chain.split(separatorCharacter);
     }
 
-    console.log(miFuncion('hola que tal', ' '))
+    console.log(myFunction('hello how are you', ' '))
 }

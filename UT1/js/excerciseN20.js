@@ -1,8 +1,8 @@
 "use strict"
 {
-    function miFuncion(chain, numberTimes) {
+    function myFunction(chain, numberTimes) {
         return chain.repeat(numberTimes);
     }
 
-    console.log(miFuncion('Hola Mundo ', 3));
+    console.log(myFunction('Hello World ', 3));
 }

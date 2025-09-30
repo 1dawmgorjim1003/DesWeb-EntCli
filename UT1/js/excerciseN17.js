@@ -1,8 +1,8 @@
 "use strict"
 {
-    function miFuncion(chain) {
+    function myFunction(chain) {
         return chain.length;
     }
 
-    console.log(miFuncion('Hola Mundo'));
+    console.log(myFunction('Hello World'));
 }

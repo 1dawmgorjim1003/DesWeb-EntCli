@@ -1,6 +1,6 @@
 "use strict"
 {
-    function miFuncion (param1, param2) {
+    function myFunction (param1, param2) {
         let output;
         param1 = parseInt(param1);
         switch (param2) {
@@ -11,11 +11,11 @@
                 output = (param1 - 32) * 5 / 9;
                 break;
             default:
-                output = 'Ha introducido un parámetro inválido';
+                output = 'You have entered an invalid parameter.';
                 break;
         }
         return output;
     }
 
-    console.log(miFuncion(32,'F'));
+    console.log(myFunction(32,'F'));
 }

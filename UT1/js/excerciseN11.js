@@ -1,12 +1,28 @@
 "use strict"
 {
-    function miFuncion (num1) {
+    //NORMAL FUNCTION
+    function myFunction (num1) {
         if (num1 % 2 == 0) {
-            return console.log('Par');;
+            return console.log('EVEN');;
         } else {
-            return console.log('Impar');
+            return console.log('ODD');
         }
     }
 
-    miFuncion(29);
+    myFunction(29);
+
+    //RECURSIVE FUNCTION
+    function myFunction2 (num1) {
+        if (num1 === 0) {
+            return 'EVEN';
+        } else if (num1 === 1) {
+            return 'ODD';
+        } else {
+            return myFunction2(num1 - 2);
+        }
+    };
+
+    console.log(myFunction2(30));
+
+
 }
