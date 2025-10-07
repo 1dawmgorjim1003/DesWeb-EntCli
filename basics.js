@@ -493,6 +493,116 @@
     includes(texto) //IT RETURNS TRUE OR FALSE IF OUR CHAIN HAVE 'TEXTO'.
     repeat(3) //FOR REPEAT OUR CHAIN X TIMES
     trim () //IT DELETES ALL WHITE SPACES AT THE SIDES OF THE CHAIN
-    match() //IT RETURNS ALL OCURRENCES OF THE CHAIN OF A REGULAR EXPRESSION
     cadena.length //IT RETURNS THE LENGTH OF THE CHAIN TEXT
+
+    //REGULAR EXPRESSIONS
+    //FOR SEARCH WORDS WITH 4 LETTERS WITH AN A AND AN O IN THAT POSITIONS
+    const r1 = /.a.o/;
+    //THE ORDER DOESN'T MATTER. WE CAN PUT ALL OR ANY LETTER
+    // i: It doesn't matter the height of the letters
+    const r2 = /.a.o/gimuy;
+    //ANOTHER WAY TO CREATE A REGULAR EXPRESSION. SECOND PARAMETER IS OPTIONAL
+    const r3 = new RegExp(".a.o", "i");
+    const r4 = new RegExp(/.a.o/,"i"); //ANOTHER WAY TO CREATE IT
+    const r5 = new RegExp(/.a.o/i); //ANOTHER WAY TO CREATE IT
+
+    r1.source //IT WRITE THE REGULAR EXPRESSION. OUTPUT: .a.o
+    r2.flags //IT WRITE THE LETTERS OF THE REG. EXPRRESION. OUTPUT: gimuy
+    r1.flags.includes("g")?console.log("yes"):console.log("no"); //IT CONFIRMS THE EXISTENCE OF LETTER X (G,I,M,U,Y)
+    r1.global?console.log("yes"):console.log("no"); //IT CONFIRMS THE EXISTENCE OF LETTER G
+    r1.ignoreCase?console.log("yes"):console.log("no"); //IT CONFIRMS THE EXISTENCE OF LETTER I
+    r1.multiline?console.log("yes"):console.log("no"); //IT CONFIRMS THE EXISTENCE OF LETTER M
+    r1.unicode?console.log("yes"):console.log("no"); //IT CONFIRMS THE EXISTENCE OF LETTER U
+    r1.sticky?console.log("yes"):console.log("no"); //IT CONFIRMS THE EXISTENCE OF LETTER Y
+
+    r5.test("GATO"); //IT RETURNS A BOOLEAN. OUTPUT: true
+    r5.test("GATA"); //OUTPUT: false
+    const regEx1 = new RegExp("^football"); //IT SEARCHS AT THE BEGINNING OF SOMETHING
+    const regEx2 = new RegExp("^football", "m"); // THE SAME BUT WE CAN TEST MORE THAN 1 LINE
+    regExp1.test("rugby\nfootball"); //OUTPUT: false
+    regEx2.test("rugby\nfootball"); //OUTPUT: true
+    let r6 = /😁./u; //IT COUNTS WITH SPECIAL CHARACTERS
+    r6.test("😁ba"); //OUTPUT: true
+    r6=/./;
+    r6.test("ab"); //OUTPUT: true
+    r6.test(" "); //OUTPUT: true
+    r6=/^.$/; //THE $ IS FOR ANOUNCE THE FINAL
+    r6.test("XX\nZ"); //OUTPUT: true
+    let regExp3 = new RegExp("a", "y");
+    regExp3.test("ba"); //OUTPUT: false
+    regExp3.lastIndex=0; //DEFAULT
+    regExp3.lastIndex=1;
+    regExp3.test("ba"); //OUTPUT: true
+
+    const regExp4 = /foo/y;
+    let myStr1 = "table footballfootbolin";
+    regExp4.lastIndex=6;
+    regExp4.test(myStr1); //OUTPUT: true, THE NEXT TIME, THE INDEX STARTS WHEN FOO ENDED.
+    /*
+        . -> ANY CHARACTER
+        \ -> FOR SEARCH A POINT
+        \n -> LINE JUMP
+        \t -> TABULATOR
+        \r -> CARRO JUMP
+        \f -> FORM END
+        \s -> SPACE
+        [] -> ANY CHARACTER INSIDE
+        [a-z] -> ANY MINUSCULE LETTER (NO ACCENTS OR Ñ)
+        [A-Z] -> ANY CAPITAL LETTER (NO ACCENTS OR Ñ)
+        [a-zA-Z] -> ANY LETTER
+        [^a-zA-Z] -> IT CAN'T BE LETTER
+        [0-9] -> ANY NUMBER
+        [^0-9] -> IT CAN'T BE NUMBER
+        [0-9a-zA-Z] -> ANY NUMBER OR LETTER
+        [^0-9a-zA-Z] -> IT CAN'T BE NUMBER OR LETTER
+        \d -> ANY NUMBER ALSO
+        [^] ->  IT CAN`T EXIST ANY CHARACTER INSIDE
+        | -> ALTERNATIVE: THE THINGS THAT WE HAVE AT RIGHT OR AT LEFT
+        [ ] -> A SPACE
+        [\t] -> A TABULATOR
+        [\r] -> CARRO JUMP
+        [\n] -> SENTENCE JUMP
+        [\f] -> END FORM
+        [ \t\r\n\f] = \s (ALL THAT THINGS)
+        [^ \t\r\n\f] = \S (NOT ALL THAT THINGS)
+        \b -> IT FOUND A TEXT WITH SPACES O PUNTUATION SIMBOLS, AT THE END OR AT BEGINNING
+        \B -> IT CAN'T FOUND A TEXT WITH SPACES O PUNTUATION SIMBOLS, AT THE END OR AT BEGINNING
+    */
+    let regExp18 = /a*/; //* -> ONE CHARACTER APPEARS ZERO O MORE TIMES
+    regExp18.test(' '); //OUTPUT: true
+    regExp18 = /a*b/;
+    regExp18.test("c"); //OUTPUT: false
+    regExp18 = /ba*/;
+    regExp18.test("bc"); //OUTPUT: true
+
+    let regExp19 = /a+/; //ONE CHARACTER WHO APPEARS 1 OR MORE TIMES 
+    regExp19.test(""); //OUTPUT: false
+    regExp19.test("a"); //OUTPUT: true
+    regExp19.test("bb"); //OUTPUT: false
+    regExp19.test("bba"); //OUTPUT: true
+
+    let regExp20 = /disparos?/; //CHARACTER BEFORE MAY APPEAR OR NOT
+    regExp20.test('Escuché disparos en la habitación.'); // OUTPUT: true
+    regExp20.test('Escuché un disparo en la habitación.'); // OUTPUT: true
+    regExp20.test('La pistola era de agua'); // OUTPUT: false
+    
+    let regExp21 = /x{3}/; /*{n, m}
+    // {n} -> CHARACTER BEFORE APPEARS N TIMES
+    // {n,} -> CHARACTER BEFORE APPEARS N OR MORE TIMES
+    // {n,m}$ -> CHARACTER BEFORE APPEARS BETWEEN N AND M TIMES*/
+    regExp21.test('holaxx x'); // OUTPUT: false
+    regExp21 = /x{3,}/;
+    regExp20.test('holaxxxxxxxxx  xx'); // OUTPUT: true
+    regExp21 = /^x{3,5}$/;
+    regExp21.test('xxxxxxxxx'); // OUTPUT: false
+    regExp21 = /^[0-9]{2}$/;
+    regExp21.test(225); // OUTPUT: false
+    regExp21 = /^[0-9]{2,}$/;
+    regExp21.test(225); // OUTPUT: true
+    regExp21 = /^[0-9]{2,4}$/;
+    regExp21.test(2254); // OUTPUT: true
+    regExp21.test(22542); // OUTPUT: false
+
+
+    match() //IT RETURNS ALL OCURRENCES OF THE CHAIN OF A REGULAR EXPRESSION
 }
