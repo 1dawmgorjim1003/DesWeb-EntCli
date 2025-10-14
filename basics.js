@@ -602,7 +602,208 @@
     regExp21 = /^[0-9]{2,4}$/;
     regExp21.test(2254); // OUTPUT: true
     regExp21.test(22542); // OUTPUT: false
-
+    let str = 'la ola de la playa tiene más sal que de costumbre'   ;
+    regExp21 = /[a-zá]{3}/i;
+    regExp21.test(str); //OUTPUT: true
+    regExp21.exec(str); //OUTPUT: ola 
+    regExp21 = /\b[a-z]{3}\b/gi;
+    regExp21.test(str); //OUTPUT: ola
+    regExp21.test(str); //OUTPUT: mas
+    regExp21.test(str); //OUTPUT: sal
+    regExp21.test(str); //OUTPUT: que
 
     match() //IT RETURNS ALL OCURRENCES OF THE CHAIN OF A REGULAR EXPRESSION
+    str.match(regExp21); //OUTPUT: ['ola', 'más', 'sal', 'que'];
+
+
+
+    //LITERAL OBJECTS
+    let persona = {
+        nombre: "Pepe",
+        edad: 30,
+        ciudad: "Cádiz"
+    };
+
+    console.log(persona.nombre);
+    console.log(persona["nombre"]) //OUTPUT: Pepe
+    persona.edad = 33; //WE CHANGE THE VALUE OF THE VAR
+    console.log(persona.edad);  //OUTPUT: 33
+
+    let animal = {
+        tipo: "gato",
+        patas: "4",
+        tieneBigotes: true,
+        dimensiones: {
+            alto: 60,
+            ancho:  30,
+            largo: 80
+        },
+        dieta: ["pescado", "pienso", "sobras"]
+    }
+
+    console.log(animal); //OUTPUT: AN ARRAY WITH ALL THE INFORMATION
+    animal.dimensiones["largo"] = 90; //WE CHANGE THE VALUE
+
+    let personaCompleta = {
+        nombre: "Hugo",
+        dni: "28123456T",
+        edad: 19,
+        ciudad: "Sevilla",
+        pasatiempos: ["Jugar a la consola", "Javascript", "Escuchar música"],
+        contacto: {
+            email: "hsilben979@g.educaand.es",
+            telefono: 624975516,
+            instagram: "@noQuieroDecirlo"
+        },
+        saludar() {
+            console.log("Holaaaaaaa");
+        },
+        saludarCompleto() {
+            console.log(`Hola, me llamo ${this.nombre} y tengo ${this.edad} años`);
+        },
+        decirEmail() {
+            return this.contacto.email;
+        }
+    }
+
+    personaCompleta.saludarCompleto(); //OUTPUT: Hola, me llamo Hugo y tengo 19 años
+    let e = personaCompleta.decirEmail();
+    console.log(e); //OUTPUT: hsilben979@g.educaand.es
+
+
+
+    //DESTRUCTURING A LITERAL OBJECT
+    //personaCompleta.nombre;
+    const {nombre:n23, dni:id, contacto: c2} = personaCompleta;
+    const {email, telefono, instagram} = c2;
+    console.log(n23); //OUTPUT: Hugo
+    console.log(ig); //OUTPUT: @noQuieroDecirlo
+
+
+
+    //JOIN TWO LITERAL OBJETCS
+    let producto = {
+        nombreProducto: "Lejía",
+        precio: 2.95,
+        marca: "Don Limpio",
+
+    }
+
+    let colores = {
+        colorLiquido: "Amarillo",
+        colorRecipiente: "Blanco",
+        colorTapon: "Azul"
+    }
+
+    let productoColor = {producto, colores}
+    console.log(productoColor); //OUTPUT: BOTH LITERAL OBJECTS
+    //THIS IS BAD, PER REFERENCE
+
+    let productoColor1 = {...producto,...colores};
+    console.log(productoColor1);
+    producto.nombreProducto="suavizante";
+    console.log(productoColor1); // THIS IS PER VALUE. WE ARE COPYING OUR LITERAL OBJECTS INTO A NEW ONE
+
+
+
+    //ARRAYS
+    //CREATE AN ARRAY
+    let myArray1 = [];
+    //PUT ELEMENTS IN AN ARRAY
+    myArray1[0] = 10;
+    myArray1[1] = 20;
+    //WE CAN PUT INSIDE DIFFERENT TYPES OF VARIABLES
+    myArray1[2] = 'Martínez';
+    console.log(myArray2);
+
+    let myArray3 = new Array(); //WE CREATE AN OBJECT OF THE CLASS ARRAY
+    myArray3[0] = 30;
+    myArray3[1] = "30";
+
+    let myArray4 = ["Gamusino", "uo", "globo"]; //ANOTHER WAY TO DECLARE AN ARRAY
+    console.log(`El array tiene ${myArray3.length} elementos`); //WE HAVE THE LENGTH OF THE ARRAY, THE NUMBER OF ELEMENTS
+
+    //CLONE ARRAY BY VALUE
+    let myArray5 = new Array();
+    myArray5 = [...myArray1];
+    myArray5 = [...myArray1,...myArray2,...myArray3]; //WE CAN PUT MORE THAN ONE ARRAY IN THE NEWER
+
+    //BIDIMENSIONAL ARRAYS
+    let myArrayBi1 = new Array();
+    //let myArrayBi1 = [[0,1], 1];
+    myArrayBi1[0] = [1,2,3,4,5];
+    myArrayBi1[1] = [2,3,4,5,6];
+    myArrayBi1[2] = [3,4,5,6,7];
+    myArrayBi1[2][4] = 'a'; //WE CHANGE THE VALUE OF THE VAR. OUTPUT: 3,4,5,6,a
+
+    //ANOTHER WAY TO DECLARE BIDIMENSIONAL ARRAYS
+    let numFilas = 2;
+    let numColumnas = 3;
+    let myArrayBi2 = new Array(numFilas);
+    for (let i = 0; i<numFilas; i++) {
+        myArrayBi2[i] = new Array(numColumnas);
+    }
+    console.log(myArrayBi2); //OUTPUT: 2 ROWS & 3 COLS WITH EMPTY VALUES
+    for (let i = 0; i < numFilas; i++) {
+        for (let j = 0; j< numColumnas; j++) {
+            myArrayBi2[i][j] = 0;
+        }
+    }
+    console.log(myArrayBi2); //OUTPUT: 2 ROWS & 3 COLS WITH VALUES 0
+
+    //ANOTHER WAY TO DECLARE BIDIMENSIONAL ARRAYS
+    let myArrayBi3 = Array.from(Array(2), () => new Array(3)); //OUTPUT: 2 ROWS & 3 COLS WITH VALUES 0
+
+    //ANTOHER WAY TO DECLARE BIDIMENSIONAL ARRAYS
+    let myArrayBi4 = new Array (5).fill().map(() => new Array(4)); //OUTPUT: 5 ROWS & 3 COLS WITH EMPTY VALUES
+
+    //OPERATIONS WITH ARRAYS
+    //JOIN
+    const elements = ["fire", "earth", "water"];
+    let str3 = elements.join()
+    console.log(str3); //OUTPUT: fire,earth,water
+    str3 = elements.join(" ")
+    console.log(str3); //OUTPUT: fire earth water
+
+    //SPLIT
+    const strNumbers = "1,2,3,4,5,6,7,8,9,10";
+    const myArrayNumbers = strNumbers.split(",");
+    console.log(myArrayNumbers); //OUTPUT: AN ARRAY WITH THE STRINGS
+
+    //PUSH
+    elements.push("storm");
+    console.log(elements); //OUTPUT: ["fire", "earth", "water", "storm"]
+
+    //POP
+    elements.pop()
+    console.log(elements); //OUTPUT: ["fire", "earth", "water"]
+
+    //SHIFT
+    elements.shift()
+    console.log(elements); //OUTPUT: ["earth", "water"]
+
+    //REVERSE   --> MODIFY THE ORIGINAL ARRAY
+    elements.reverse();
+    console.log(elements); //OUTPUT: ["water", "earth"]
+
+    //SORT 
+    let myNumbers = [100, 5, 15, 1, 99];
+    myNumbers.sort();
+    console.log(myNumbers); //OUTPUT: [1, 100, 15, 5, 99];
+    //WE SORT IT FROM MINOR TO HIGHER
+    myNumbers.sort(function (first, second) {
+        if (first > second) {
+            return 1;
+        } else {
+            return -1;
+        }
+    });
+    console.log(myNumbers); //OUTPUT: [1, 5, 15, 99, 100]
+    //WE SORT IT FROM MINOR TO HIGHER
+    myNumbers.sort( (a,b) => a>b?1:-1);
+    console.log(myNumbers); //OUTPUT: [1, 5, 15, 99, 100] 
+    myNumbers.sort( (a,b) => a-b); //FROM MINOR TO HIGHER
+    console.log(myNumbers); //OUTPUT: [1, 5, 15, 99, 100] 
+    myNumbers.sort( (a,b) => b-a); //FROM HIGHER TO MINOR
+    console.log(myNumbers); //OUTPUT: [100, 99, 15, 5, 1] 
 }
