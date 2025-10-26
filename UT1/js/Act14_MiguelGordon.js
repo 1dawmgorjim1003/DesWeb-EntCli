@@ -5,5 +5,5 @@
         return num1 * (1 - discount);
     }
 
-    console.log(myFunction(600, 20));
+    console.log(myFunction(1000, 20));
 }

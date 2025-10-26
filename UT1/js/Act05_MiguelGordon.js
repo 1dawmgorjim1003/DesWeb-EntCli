@@ -3,7 +3,7 @@
    let num1 = parseInt(prompt('Introduzca un número: '));
    let num2 = parseInt(prompt('Introduzca otro número: '));
    let output = '';
-   for (let i = (num1+parseInt(1)); i < num2; i++) {
+   for (let i = (num1+1); i < num2; i++) {
         output += i;
         output += ' ';
    }

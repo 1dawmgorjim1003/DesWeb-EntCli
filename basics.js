@@ -806,4 +806,121 @@
     console.log(myNumbers); //OUTPUT: [1, 5, 15, 99, 100] 
     myNumbers.sort( (a,b) => b-a); //FROM HIGHER TO MINOR
     console.log(myNumbers); //OUTPUT: [100, 99, 15, 5, 1] 
+
+    //SLICE (start, [end]) --> BETWEEN START AND END -1
+    let names = ['Rita', 'Manuel', 'Miguel' , 'Ana' , 'Vanesa']    ;
+    let manNames = names.slice(1,3);
+    console.log(manNames); //OUTPUT: ['Manuel', 'Miguel'];
+    console.log(names.slice(-2)); // OUTPUT: ['Ana', 'Vanesa'];
+    console.log(names.slice(-4)); // OUTPUT: ['Manuel', 'Miguel', 'Ana', 'Vanesa'];
+
+
+    //FILTER --> CREATE AN ARRAY WITH FILTERED ELEMENTS
+    let users = [
+        { name:'John', age: 34},
+        { name:'Amy', age: 20},
+        { name:'Amador', age: 25},
+        { name:'Thomas', age: 10}
+    ];
+    let filteredUsers = users.filter(function (user) {
+        return user.age > 15;
+    });
+    console.log(filteredUsers); /* OUTPUT:[{ name:'John', age: 34},{ name:'Amy', age: 20}]; */
+
+    let filteredUsers2 = users.filter((user) => user.age > 15);
+    console.log(filteredUsers2); /* OUTPUT:[{ name:'John', age: 34},{ name:'Amy', age: 20}]; */
+
+
+    //FIND --> IT RETURN THE FIRST ELEMENT OF AN ARRAY THAT HAVE THE CONDITION
+    let user = users.find(function (user) {
+        return user.name.match(/A[a-z]*/);
+    });
+    console.log(user); //OUTPUT: {name: 'Amy', age: 20};
+    let user2 = users.find((user) => user.name.match(/A[a-z]*/));
+    console.log(user2); //OUTPUT: {name: 'Amy', age: 20};
+
+
+    //SOME --> IT RETURN TRUE OR FALSE. IT CHECKS IF AT LEAST 1 ELEMENT HAVE THE CONDITION.
+    let hasUser = users.some(function (user) {
+        return user.age ===10;
+    });
+    console.log(hasUser); //OUTPUT: true
+    let hasUser2 = users.some((user) => user.age === 11);
+    console.log(hasUser2); //OUTPUT: false
+
+
+    //FINDINDEX --> IT RETURNS THE INDEX OF THE FIRST ARRAY'S NUMBER THAT HAVE THE CONDITION
+    let userIndex = users.findIndex((user) => user.age === 25);
+    console.log(userIndex); //OUTPUT: 2
+    let userIndex2 = users.findIndex((user) => user.age === 27);
+    console.log(userIndex2); //OUTPUT: -1 (IT DOESN'T EXIST)
+
+
+    //CONCAT --> IT CONCATENATE ARRAYS. IT COPY IT BY VALUES
+    let array1 = ['a', 'b', 'c'];
+    let array2 = ['d', 'e', 'f'];
+    let concatenatedArray = array1.concat(array2);
+    console.log(concatenatedArray); //OUTPUT: ['a', 'b', 'c', 'd', 'e', 'f'];
+
+
+    //REDUCE (ACUMULATOR, ACTUALVALUE(BY DEFAULT IS 0))
+    let numbers = [1,2,3,4,5];
+    let totalSum = numbers.reduce(((acumulator, actualValue) => {acumulator += actualValue;return acumulator;}));
+    console.log(totalSum); //OUTPUT: 15
+    let totalSum2 = numbers.reduce(((acumulator, actualValue) => {acumulator += actualValue;return acumulator;}),10);
+    console.log(totalSum2); //OUTPUT: 25
+
+    const myNumbersArray = [[0,1],[2,3],[4,5]];
+    let completedArray = myNumbersArray.reduce(((ac,av) => ac.concat(av)));
+    console.log(completedArray); //OUTPUT: [0,1,2,3,4,5]
+
+
+    //INCLUDES --> IT RETURNS TRUE OR FALSE
+    const motos = ['yamaha','ducati','kawasaki'];
+    console.log(motos.includes('vespa')); //OUTPUT: false
+    console.log(motos.includes('ducati')); //OUTPUT: true
+    
+
+
+    /*ITERATE OVER AN ARRAY
+        - FOR
+        - FOREACH
+        - MAP
+        - FOR OF
+    */
+    //FOR
+    let vector = [1,2,'A','F',-1,2.4];
+    for (let i = 0; i < vector.length ; i++) {
+        console.log(vector[i]); //OUTPUT: 1 /n 2 /n A /n F /n -1 /n 2.4
+    }
+
+    //FOREACH --> IT DOESN'T RETURN ANYTHING
+    vector.forEach((elem) => console.log(elem)); //OUTPUT: 1 /n 2 /n A /n F /n -1 /n 2.4
+    vector.forEach((elem, index) => console.log(`En la posición ${index} nos encontramos el elemento ${elem}`)); //OUTPUT: En la posición 1 nos encontramos el elemento 1 /n En la posición 2 nos encontramos el elemento 2 /n En la posición 3 nos encontramos el elemento A /n ...
+
+    //MAP --> IT RETURNS AN ARRAY
+    vector.map((elem) => console.log(elem)); //OUTPUT: 1 /n 2 /n A /n F /n -1 /n 2.4
+    let vector2 = vector.map((elem) => {console.log(elem); return elem});
+    console.log(vector2); //OUTPUT: [1,2,'A','F',-1,2.4]
+    let vector3 = vector.map((elem) => elem*2);
+    console.log(vector3); //OUTPUT: [2,4,NaN,NaN,-2,4.8]
+    // let users = [
+    //     { name:'John', age: 34},
+    //     { name:'Amy', age: 20},
+    //     { name:'Amador', age: 25},
+    //     { name:'Thomas', age: 10}
+    // ];
+    let vector4 = vector.map(user => user.age);
+    console.log(vector4); //OUTPUT: [34,20,25,10]
+    let sumaEdades = vector4.reduce(((ac,av) => ac += av),0);
+    console.log(sumaEdades); //OUTPUT: 89
+    let fullUsers = users.map(user => {return {...user, city: 'Jalisco'}});
+    console.log(fullUsers); //OUTPUT: { name:'John', age: 34, city: 'Jalisco'} \n { name:'Amy', age: 20, city: 'Jalisco'} \n ...
+    let fullUsers2 = users.map(user => {return {...user, age: user.age*2}});
+    console.log(fullUsers2); //OUTPUT: { name:'John', age: 68} \n { name:'Amy', age: 40} \n ...
+
+    //FOR OF
+    for (let user of users) {
+        console.log(user); // OUTPUT: { name:'John', age: 34} \n { name:'Amy', age: 20} \n ...
+    }
 }

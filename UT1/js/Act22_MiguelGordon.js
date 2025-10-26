@@ -1,7 +1,7 @@
 "use strict"
 {
     function myFunction(chain, word) {
-        const regExp  = new RegExp(`\\b${word}\\b`, 'gi');
+        const regExp  = new RegExp(`${word}`, 'gi');
         chain = chain.match(regExp);
         return chain.length;
 
