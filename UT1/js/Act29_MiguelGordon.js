@@ -13,6 +13,7 @@
             }
 
             return decimal;
+            
         } else if (base === 10) {
             let binary = 0;
             let factorial = 1;

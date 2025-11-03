@@ -923,4 +923,187 @@
     for (let user of users) {
         console.log(user); // OUTPUT: { name:'John', age: 34} \n { name:'Amy', age: 20} \n ...
     }
+
+    
+
+    //DATE
+    let fecha = new Date();
+    console.log(fecha); //OUTPUT: Monday Oct 27 2025 13:26:09 GMT+0100
+    let fecha2 = new Date('1979/5/30 14:30:15');
+    console.log(fecha2); //OUTPUT: Wed May 30 1979 14:30:15 GMT+0200
+    
+    let fecha3 = new Date(1979, 11, 30, 14, 30, 15);
+    console.log(fecha3); //OUTPUT: Wed Dec 30 1979 14:30:15 GMT+0200
+    
+    let fecha4 = new Date(1979, 4, 30);
+    console.log(fecha4); //OUTPUT: Wed May 30 1979 00:00:00 GMT+0200
+    
+    let fecha5 = new Date('1979/05/30');
+    console.log(fecha5); //OUTPUT: Wed May 30 1979 00:00:00 GMT+0200
+
+    //GET Methods
+    let date = new Date('2025/10/27 15:30:10.999');
+    console.log(date); //OUTPUT: Mon Oct 27 2018 15:30:10 GMT+0200
+
+    console.log(date.getDay()); // 1 = Monday;
+    console.log(date.getDate()); // 27
+    console.log(date.getMonth()); // 9
+    console.log(date.getFullYear()); // 2025
+    console.log(date.getFullYear()); // 2025
+    console.log(date.getYear()); // 125 (starts in 1900)
+    console.log(date.getHours()); // 15
+    console.log(date.getMinutes()); // 30
+    console.log(date.getSeconds()); // 10
+    console.log(date.getMilliseconds()); // 999
+    console.log(date.getTimezoneOffset()); // 0 - 1h = -60 minutes
+    console.log(date.getTime()); // 01/01/1970 in milliseconds
+
+    date.setMonth(4);
+    date.setDate(30); // day
+    date.setFullYear(1979);
+    date.setHours(14);
+    date.setMinutes(30);
+    date.setSeconds(15);
+
+    let d = date.toDateString();
+    console.log(d); // Wed May 30 1979
+    
+    let d2 = date.toLocaleDateString();
+    console.log(d2); // 30/5/1979
+
+    console.log(date.toUTCString());
+
+
+
+    //MATH
+    console.log(Math.PI); //3,14159265...
+    console.log(Math.E); //2,7...
+    console.log(Math.LN2); //0,69...
+    console.log(Math.LN10);
+
+    let f = 37.6;
+    console.log(Math.floor(f)); // 37
+    console.log(Math.ceil(f)); // 38
+    console.log(Math.round(f)); // 38
+    console.log(Math.round(37.4)); // 37
+    let f2 = -37.6;
+    console.log(Math.floor(f2)); // -38
+    console.log(Math.ceil(f2)); // -37
+    console.log(Math.round(f2)); // -38
+    console.log(Math.round(-37.5)); // -37
+
+    f = 37.6;
+    console.log(Math.abs(f)); // 37.6
+    console.log(Math.min(10,20,4)); // 4
+    console.log(Math.max(10,20,4)); // 20
+    console.log(Math.pow(2,4)); // 16
+    console.log(Math.sqrt(121)); // 11
+    console.log(Math.random()); // 0 <= x < 1
+    console.log(Math.random()*100); // 0 <= x < 100
+    console.log(Math.round(Math.random()*100)); // 0 <= x <= 100
+    console.log(Math.floor(Math.random()*100)); // 0 <= x <= 99
+    console.log(Math.ceil(Math.random()*100)); // 1 <= x <= 10
+    console.log(Math.random()*(100-10)+10); // 10 <= x < 100
+    console.log(Math.round(Math.random()*(100-10)+10)); // 10 <= x <= 100
+    console.log(Math.round(Math.random()*(600-501)+501)); // 501 <= x <= 600
+
+
+
+    //TEMPORIZATORS
+    //EACH 2 SECONDS, WE PAINT THE DATE. IT GET'S PAINTED AT THE END OF THE CODE
+    let id2 = setInterval(function() {
+        let d = new Date().toLocaleDateString();
+        console.log(d);
+    },2000);
+
+    //IT GETS EXECUTED AFTER PASSES THE MILISECONDS. IT ONLY GETS EXECUTED ONCE
+    setTimeout(function() {
+        console.log('setTimeOut');
+    },3000);
+
+    //CHROME: 30/10/2025 (3 or 4 times) \n setTimeOut \n 30/10/2025 (n times)
+
+    //IT CANCEL THE TEMPORIZATOR BY THE VAR THAT HAVE THE FUNCTION
+    clearInterval(id2); // OUTPUT: setTimeOut;
+
+
+
+    //SET AND MAP
+    //SET
+    let mySet1 = new Set();
+    mySet1.add(1);
+    mySet1.add(2);
+    mySet1.add(2);
+    mySet1.add('a');
+    mySet1.add({});
+    mySet1.add({});
+    mySet1.add('Hola');
+    mySet1.add('hola');
+    mySet1.add('Hola');
+    console.log(mySet1); //1, 2, a , {...}, {...}, Hola, hola ; IT DOESN`T PAINT DUPLICATED VALUES EXCEPT OBJECTS
+    console.log(mySet1.size); //IT PAINTS THE SIZE OF THE SET WITHOUT THE DUPLICATED VALUES
+    for (let elem of mySet1) {
+        console.log(elem); //1 \n 2 \n ...
+    }
+    mySet1.forEach(elem => console.log(elem)); //1 \n 2 \n ...
+    
+    //TRANSFORM A SET IN AN ARRAY
+    let myArrayS1 = Array.from(mySet1);
+    console.log(myArrayS1); // IT ONLY HAVE THE NON-DUPLICATED VALUES OF THE SET
+    
+    //CREATE AN SET FROM AN ARRAY
+    let myArrayS2 = new Array(1,2,3,4,5,6,7,7,8,8,9,9);
+    let mySet2 = new Set(myArrayS2);
+    console.log(mySet2); // IT ONLY PAINTS THE NON-DUPLICATED VALUES
+
+    //IT CHECKS THE EXISTENCE OF A VALUE INSIDE THE SET
+    console.log(mySet2.has(10)); // false
+    console.log(mySet2.has(6)); // true
+
+    console.log(mySet2.delete(1)); // true
+    console.log(mySet2.delete(1)); // false
+    mySet2.clear(); //IT DELETES ALL THE ELEMENTS OF THE SET
+
+    //MAP: IDENTIFICATED DATA COLLECTION BY KEYS;
+    let map = new Map();
+    map.set('name','Luis');
+    map.set('lastname','Martínez');
+    map.set('age','55');
+    console.log(map); // {name => 'Luis', lastname => 'Martínez', ...}
+    console.log(map.size) // 3
+    console.log(map.has('email')); // false
+    console.log(map.has('name')); // true
+    console.log(map.get('name')); // Luis
+    map.set('name','Luis Enrique'); 
+    console.log(map); // {name => 'Luis Enrique', lastname => 'Martínez', ...}
+    let myStrangeObject = {};
+    map.set(myStrangeObject, 10);
+    map.set(false, 'muy falso');
+    console.log(map); // ..., {} => 10, false => 'muy falso'}
+    let aM = map.get(myStrangeObject);
+    console.log(aM); // 10
+
+    //RUN A MAP
+    map.forEach(elem => console.log(elem)); // {Luis Enrique \n Martínez \n 55 \n ...}
+    map.forEach(function (value, key) {
+        console.log(key + ": " + value); // {name: Luis Enrique \n lastname: Martínez ...}
+    });
+
+    for (let [key, value] of map) {
+        console.log(key + "= " + value); // {name= Luis Enrique \n lastname= Martínez ...}
+    }
+
+    let map2 = new  Map([
+        ['name','Donald'],
+        ['lastname','Trump'],
+        ['age','79']
+    ]);
+    console.log(map2); // {name => Donald, lastanme => Trump, ...}
+    let map2Keys = [...map2.keys()];
+    let map2Values = [...map2.values()];
+    console.log(map2Keys); //  {name, lastname, age}
+    console.log(map2Values); // {Donald, Trump, 79}
+
+
+
 }
