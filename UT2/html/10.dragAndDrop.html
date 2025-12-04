@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cajaRoja{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 0, 0);
+            cursor: grab;
+        }
+        .cajaAzul{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            cursor: grab;
+        }
+
+        .contenedor{ 
+            width: 200px;
+            height: 200px;
+            border:2px solid black;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="cajaRoja" draggable="true"></div>
+    <div class="cajaAzul" draggable="true"></div>
+    <div class="contenedor" ></div>
+    <p id="finalMessage"></p>
+
+    <script src="../js_theory/10.dragAndDrop.js"></script> 
+</body>
+</html>

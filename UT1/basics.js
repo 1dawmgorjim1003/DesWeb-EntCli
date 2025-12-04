@@ -44,6 +44,7 @@
         const number = 5;
         printNumber();
     }
+    
     app(); // IT PRINTS 10, BECAUSE THERE IS A CONST NUMBER OUT
            // OF THE BLOCKS
     
@@ -607,10 +608,10 @@
     regExp21.test(str); //OUTPUT: true
     regExp21.exec(str); //OUTPUT: ola 
     regExp21 = /\b[a-z]{3}\b/gi;
-    regExp21.test(str); //OUTPUT: ola
-    regExp21.test(str); //OUTPUT: mas
-    regExp21.test(str); //OUTPUT: sal
-    regExp21.test(str); //OUTPUT: que
+    regExp21.exec(str); //OUTPUT: ola
+    regExp21.exec(str); //OUTPUT: mas
+    regExp21.exec(str); //OUTPUT: sal
+    regExp21.exec(str); //OUTPUT: que
 
     match() //IT RETURNS ALL OCURRENCES OF THE CHAIN OF A REGULAR EXPRESSION
     str.match(regExp21); //OUTPUT: ['ola', 'más', 'sal', 'que'];

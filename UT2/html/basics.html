@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cListaVehiculos {
+            color: blue;
+        }
+
+        .cHache3 {
+            background-color: yellow;
+        }
+        .cImportante {
+            
+            border-radius: 1rem;
+        }
+        .cContenido {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.google.com">Click aquí</a>
+    <br>
+    <img src="src/img.jpg" alt="" width="100px" height="100px">
+    <br>
+    <p>UT2 - DOM and EVENTS</p>
+    <p>UT2 - BOM and FORMS</p>
+    <br>
+    <ul id="idCiclomotores" class="cListaVehiculos" name="nLista" style="color:red">
+        <li>Vespino ALX</li>
+        <li>PIaggio Typhoon 49cc</li>
+    </ul>
+
+    <ul id="idCoches" class="cListaVehiculos" name="nLista">
+        <li>Ford Fiesta</li>
+        <li>Seat Ibiza</li>
+    </ul>
+
+
+    <ul id="idAviones" class="cListaPersonajes" name="nLista">
+        <li>Leadbottom</li>
+        <li>Chug</li>
+        <li>Blade</li>
+        <li>Dusty Crophopper</li>
+    </ul>
+
+    <a class="enlace" 
+             data-id="1" 
+             data-description="Document Object Model" 
+             href="2.indexEventos.html"
+             style="color: white ; background-color: brown "> 
+                 DOM 
+    </a>
+
+    <h3 class="cHache3 cImportante cContenido ">Mi H3</h3>
+
+    <p>Aquí abajo hay un div1 pero no contiene nada al principio:</p>
+    <div id="idDiv1" class="cDiv1">
+     
+    </div>
+
+    <div id="idDiv2" class="cDiv2">Hola <strong>amigos</strong>
+    </div>
+
+    <div id="idApp" style="background-color: lightgrey;">
+        <div class="cHeader">
+          <h1>Titular</h1> 
+        </div>
+        hermano anterior
+        <p>Párrafo que tiene hermanos</p>
+        hermano posterior
+        <a href="/">Enlace</a>
+    </div>
+
+    <script src="basics.js"></script>
+</body>
+</html>

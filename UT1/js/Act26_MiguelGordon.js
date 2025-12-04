@@ -11,6 +11,7 @@
     }
 
     function myFunction2(chain) {
+        chain = chain.toLowerCase();
         if ((chain.charAt(0)=='m' || chain.charAt(0)=='d') && (chain.charAt(chain.length-1)=='a' || chain.charAt(chain.length-1)=='o')) {
             return true;
         } else {
@@ -19,6 +20,6 @@
     }
 
 
-    console.log(myFunction('Miguela'));;
-    console.log(myFunction2('miguela'));;
+    console.log(myFunction('Dama'));;
+    console.log(myFunction2('Dama'));;
 }
