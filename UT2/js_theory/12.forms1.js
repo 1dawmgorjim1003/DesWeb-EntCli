@@ -64,7 +64,40 @@
   
     for (let c of myChecks) {
         c.addEventListener('change',(e) => {
-            
+            if (c.checked) {
+                console.log(`Me como un ${c.value}`);
+            } else {
+                console.log(`No me como un ${c.value}`);
+            }
         });
     }
+
+    let seleccion = document.querySelector('#idLenguaje');
+    for (let o of seleccion){
+        console.log(o.value); //VALUE OF ATTRIBUTTE VALUE
+        console.log(o.textContent); //TEXT'S VALUE
+        console.log(seleccion.selectedIndex) //RETURNS THE SELECTED OPTION
+    };
+
+    console.log(`-> ${seleccion.options[seleccion.selectedIndex].value}`); //FOR KNOWING THE VALUE OF THE SELECTED INDEX OF A LABEL
+
+    seleccion.addEventListener('change', (e) => {
+        console.log(`\nEl índice seleccionado es: ${seleccion.selectedIndex}`);
+        console.log(`El valor del elemento seleccionado es: ${seleccion.options[seleccion.selectedIndex].value}`);
+        console.log(`El texto del elemento seleccionado es: ${seleccion.options[seleccion.selectedIndex].text}`);
+    });
+
+    let dataList = document.querySelector('#idFrutas');
+    for (let o of dataList) {
+        console.log(o.value);
+        console.log(o.text);
+        console.log(o.textContent);
+    }
+
+    let cajaTexto = document.querySelector('#idFrutas1');
+    cajaTexto.addEventListener('change'),(e) => {
+        console.log(e.target);;
+        console.log(e)
+        console.log(e.target.value);
+    };
 }

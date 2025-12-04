@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios 2</title>
+    <style>
+        .cForm1 {
+            background-color: yellowgreen;
+            padding: 1rem;
+            border-radius: 2rem;
+        }
+        .cDiv1 {
+            background-color: coral;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+        .error {
+            color: red;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="idDiv1" class="cDiv1">
+    <p>Formulario</p>
+    <form name="nForm1" id="idForm1" method="post" action="https://formsubmit.co/mgorjim1003@g.educaand.es" class="cForm1">
+        <label for="idPasswd">Contraseña:</label>
+        <input name="passwd" type="password" id="idPasswd" minlength="3" maxlength="8" required>
+        <br><br>
+        <label for="idText1">Palabra de 4 letras que empieza por 'a':</label>
+        <input name="palabra" type="text" id="idText1" placeholder="Palabra de 4 caracteres que empieza por 'a'"  >
+        <br><br>
+        <label for="idEmail1">Escribe tu email:</label>
+        <input name="cElectr" type="email" id="idEmail1" placeholder="usuario@midominio.es" required>
+        <br><br>
+        <!-- <input type="submit" id="idBtnEnviar" value="click para enviar"> -->
+        <button id="idBtnEnviar"> click para enviar</button>
+    </form>
+
+    </div>
+
+    <script src="../js_theory/13.forms2.js"></script>
+
+</body>
+</html>
