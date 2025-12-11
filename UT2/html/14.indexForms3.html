@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormData</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 250px;
+            border:1px solid black;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Form</p>
+        <form name="nFormulario1" id="idFormulario" method="post" action="https://formsubmit.co/mgorjim1003@g.educaand.es" class="cFormulario"> 
+            <label for="idNombre">Tu nombre:</label>    
+            <input name="nombre" type="text" id="idNombre" placeholder="escribe tu nombre" value="Santiago de los Mares" required>
+            <br><br>
+
+            <label for="idEdad">Tu edad:</label>
+            <input name="edad" type="text" id="idEdad" placeholder="escribe tu edad" required>
+            <br><br>
+
+            <label for="idEmail">Tu email:</label>
+            <input name="email" type="email" id="idEmail" placeholder="usuario@midominio.es" required>
+            <br><br>
+            
+            <input type="submit" id="idBtnEnviar" value="click para enviar">
+
+        </form>
+
+    </div>
+    <!-- Probar esta línea de aquí abajo: no funciona xq está fuera del formulario -->
+    <!-- <input type="submit" id="idBtnEnviar" value="click para enviar"> -->
+   
+    <script src="../js_theory/14.forms3.js"></script>
+</body>
+</html>
