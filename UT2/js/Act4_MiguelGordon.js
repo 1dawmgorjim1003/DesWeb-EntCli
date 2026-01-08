@@ -22,7 +22,7 @@
     texts.push(newP);
 
     newP.addEventListener('mouseout', () => {
-      newP.classList.add('hidden');
+      newP.style.display = 'none';
     });
 
     newP.addEventListener('dblclick', () => {
@@ -34,7 +34,7 @@
   newBtnBack.addEventListener('click', () => {
     texts.forEach(p => {
       if (document.body.contains(p)) {
-        p.classList.remove('hidden');
+        p.style.display = 'block';
       }
     });
   });

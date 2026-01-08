@@ -1,46 +1,51 @@
-"use strict" 
+"use strict"
 {
-  let imgBall = document.createElement('img');
-  imgBall.src = 'src/ball.png';
-  imgBall.width = '50';
-  imgBall.height = '50';
-  imgBall.draggable = true;
-  imgBall.classList.add('hand');
-  document.body.appendChild(imgBall);
-  
-  document.body.appendChild(document.createElement('br'));
-  let imgTrash = document.createElement('img');
-  imgTrash.src = 'src/empty_trash.webp';
-  imgTrash.width = '100';
-  imgTrash.height = '100';
-  document.body.appendChild(imgTrash);
+    let form = document.createElement('form');
+    form.method = 'post';
+    form.action = 'https://formsubmit.co/mgorjim1003@g.educaand.es';
 
-  let draggedBox = 0;
+    let input = document.createElement('input');
+    input.type = 'text';
+    input.name ='input';
+    input.required = true;
+    
+    let input2 = document.createElement('input');
+    input2.type = 'text';
+    input2.name ='input2';
+    input2.required = true;
 
-  imgBall.addEventListener('dragstart',(e) => {
-    draggedBox = e.target;
-  });
-  imgBall.addEventListener('drag',(e) => {
+    let button = document.createElement('button');
+    button.type = 'submit';
+    button.textContent = 'Enviar';
 
-  });
-  imgBall.addEventListener('dragend',(e) => {
+    let myWarning = document.createElement('p');
+    myWarning.textContent = 'Las palabras no son anagramas';
+    myWarning.style.color = 'red';
 
-  });
+    document.body.append(form);
+    form.append(input);
+    form.append(input2);
+    form.append(button);
 
-  imgTrash.addEventListener('dragenter',(e) => {
-
-  });
-  imgTrash.addEventListener('dragleave',(e) => {
-
-  });
-  imgTrash.addEventListener('dragover',(e) => {
-    e.preventDefault();
-  });
-  imgTrash.addEventListener('drop',(e) => {
-    if (draggedBox === imgBall) {
-      imgBall.style.display = 'none';
-      imgTrash.src = 'src/full_trash.png';
+    function makeSortedWord(word) {
+        return word.toLowerCase().replace(/\s+/g, '').split('').sort().join(''); // (*)
     }
-  });  
-  
+
+    function compareWords(word1,word2) {
+        word1 = makeSortedWord(word1);
+        word2 = makeSortedWord(word2);
+        if (word1.length > 0 && word1 == word2) {
+            return true
+        } else {
+            return false;
+        }
+    };
+
+    form.addEventListener('submit',(e) => {
+        if (!compareWords(input.value,input2.value)) {
+            e.preventDefault();
+            button.insertAdjacentElement('beforebegin',myWarning);
+            myWarning.style.display='block';
+        }
+    });
 }

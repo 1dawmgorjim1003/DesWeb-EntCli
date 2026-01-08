@@ -1,46 +1,84 @@
-"use strict" 
+"use strict";
 {
-  let imgBall = document.createElement('img');
-  imgBall.src = 'src/ball.png';
-  imgBall.width = '50';
-  imgBall.height = '50';
-  imgBall.draggable = true;
-  imgBall.classList.add('hand');
-  document.body.appendChild(imgBall);
-  
-  document.body.appendChild(document.createElement('br'));
-  let imgTrash = document.createElement('img');
-  imgTrash.src = 'src/empty_trash.webp';
-  imgTrash.width = '100';
-  imgTrash.height = '100';
-  document.body.appendChild(imgTrash);
+    let cities = {
+        "Alicante": ["Alicante Capital", "Elche", "Orihuela"],
+        "Castellón": ["Castellón Capital", "Oropesa", "Vinaroz"],
+        "Valencia": ["Valencia Capital", "Torrent", "Mislata"]
+    };
 
-  let draggedBox = 0;
+    let form = document.createElement("form");
+    form.method = "post";
+    form.action = 'https://formsubmit.co/mgorjim1003@g.educaand.es';
 
-  imgBall.addEventListener('dragstart',(e) => {
-    draggedBox = e.target;
-  });
-  imgBall.addEventListener('drag',(e) => {
+    let select1 = document.createElement("select");
+    select1.name = "provincia";
 
-  });
-  imgBall.addEventListener('dragend',(e) => {
+    let option = document.createElement("option");
+    option.value = "";
+    option.textContent = "Select no seleccionado";
+    option.selected = true;
+    select1.appendChild(option);
 
-  });
+    ["Alicante", "Castellón", "Valencia"].forEach((p) => {
+        let opt = document.createElement("option");
+        opt.value = p;
+        opt.textContent = p;
+        select1.appendChild(opt);
+    });
 
-  imgTrash.addEventListener('dragenter',(e) => {
+    let select2 = document.createElement("select");
+    select2.name = "ciudad";
 
-  });
-  imgTrash.addEventListener('dragleave',(e) => {
-
-  });
-  imgTrash.addEventListener('dragover',(e) => {
-    e.preventDefault();
-  });
-  imgTrash.addEventListener('drop',(e) => {
-    if (draggedBox === imgBall) {
-      imgBall.style.display = 'none';
-      imgTrash.src = 'src/full_trash.png';
+    function cityReset() {
+        select2.textContent = "";
+        let opt = document.createElement("option");
+        opt.textContent = "Select no seleccionado";
+        opt.selected = true;
+        select2.appendChild(opt);
     }
-  });  
-  
+
+    function loadCities(prov) {
+        cityReset();
+        if (!prov) {
+            return;
+        } else {
+            cities[prov].forEach((c) => {
+                let opt = document.createElement("option");
+                opt.value = c;
+                opt.textContent = c;
+                select2.appendChild(opt);
+            });
+            if (prov === "Valencia") {
+                select2.value = "Mislata";
+            }
+        }
+    }
+
+    cityReset();
+
+    let btn = document.createElement("button");
+    btn.type = "submit";
+    btn.textContent = "Enviar";
+
+    let myWarning = document.createElement("p");
+    myWarning.textContent = "Debes seleccionar una provincia y una ciudad";
+    myWarning.style.color = "red";
+    myWarning.style.display = "none";
+
+    document.body.append(form);
+    form.append(select1);
+    form.append(select2);
+    form.append(btn);
+
+    select1.addEventListener("change", () => {
+        loadCities(select1.value);
+    });
+
+    form.addEventListener("submit", (e) => {
+        if (!select1.value || !select2.value) {
+            e.preventDefault();
+            btn.insertAdjacentElement('beforebegin',myWarning);
+            myWarning.style.display = "block";
+        } 
+    });
 }

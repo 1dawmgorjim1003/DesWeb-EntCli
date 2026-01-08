@@ -20,6 +20,7 @@
     document.body.appendChild(form);
     form.append(input);
     form.append(br);
+    br.insertAdjacentElement('afterend',br.cloneNode());
     form.appendChild(submit);
 
     function letterReview(dni) {

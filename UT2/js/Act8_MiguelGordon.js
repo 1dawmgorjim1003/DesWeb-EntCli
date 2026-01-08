@@ -1,9 +1,9 @@
 "use strict" 
 {
-  let colours = ['red','blue','orange','yellow','green','black','brown','pink','violet','gray'];
-  document.addEventListener('dblclick',(e) => {
-    console.log('Doble click');
-    let randomNumber = Math.floor(Math.random() * colours.length);
-    document.body.style.backgroundColor = colours[randomNumber];
-  });
+    document.addEventListener('dblclick',(e) => {
+      let colorOne =  Math.round(Math.random()*255);
+      let colorTwo = Math.round(Math.random()*255);
+      let colorThree = Math.round(Math.random()*255);
+      document.body.style.backgroundColor = `rgb(${colorOne},${colorTwo},${colorThree})`;
+    });
 }

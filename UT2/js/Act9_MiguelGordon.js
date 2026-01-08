@@ -20,22 +20,11 @@
   imgBall.addEventListener('dragstart',(e) => {
     draggedBox = e.target;
   });
-  imgBall.addEventListener('drag',(e) => {
-
-  });
-  imgBall.addEventListener('dragend',(e) => {
-
-  });
-
-  imgTrash.addEventListener('dragenter',(e) => {
-
-  });
-  imgTrash.addEventListener('dragleave',(e) => {
-
-  });
+  
   imgTrash.addEventListener('dragover',(e) => {
     e.preventDefault();
   });
+
   imgTrash.addEventListener('drop',(e) => {
     if (draggedBox === imgBall) {
       imgBall.style.display = 'none';
