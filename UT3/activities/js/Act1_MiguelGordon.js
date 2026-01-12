@@ -1,7 +1,7 @@
 "use strict"
 {
     let myH1 = document.createElement('h1');
-    myH1.textContent = 'Contador de visitas';
+    myH1.textContent = 'Contador de visitas con Cookies';
     myH1.style.color = 'blue';
     
     let myH3 = document.createElement('h3');
