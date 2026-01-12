@@ -86,7 +86,7 @@
         
     }
 
-    saveBackgroundColor();
+    // saveBackgroundColor();
 
     // VERSION WITHOUT CHECKING VALUES
 

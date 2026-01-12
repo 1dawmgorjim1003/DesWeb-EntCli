@@ -68,14 +68,17 @@
 
             if (name !== "" && name !== null) {
                 localStorage.setItem('username',name);
+                myH2.textContent = `¡Bienvenido de nuevo, ${localStorage.getItem('username')}!`;
             }
+            
         } else {
-            myH2.textContent = `Bienvenido de nuevo, ${localStorage.getItem('username')}`;
+            myH2.textContent = `¡Bienvenido de nuevo, ${localStorage.getItem('username')}!`;
         }
 
         myButton.addEventListener('click',(e) => {
             if (localStorage.getItem('username')) {
                 localStorage.removeItem('username');
+                window.location.href = 'http://127.0.0.1:5500/UT3/theory/3.localStorage.html';
             }
         });
     }
