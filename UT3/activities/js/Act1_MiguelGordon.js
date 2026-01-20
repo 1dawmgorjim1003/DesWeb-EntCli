@@ -17,7 +17,7 @@
     if (!getCookie('visits-counter')) {
         setCookie('visits-counter',1,7);
     } else {
-        let visitsNumber = Number(getCookie('visits-counter'));
+        let visitsNumber = parseInt(getCookie('visits-counter'));
         visitsNumber++;
         setCookie('visits-counter',visitsNumber,7);
     }

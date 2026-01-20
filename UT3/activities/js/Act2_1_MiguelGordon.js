@@ -17,7 +17,7 @@
         localStorage.setItem('visits-counter',1);
         myH3.textContent = `Número de visita: 1`;
     } else {
-        let visitsNumber = Number(localStorage.getItem('visits-counter'));
+        let visitsNumber = parseInt(localStorage.getItem('visits-counter'));
         visitsNumber++;
         localStorage.setItem('visits-counter',visitsNumber);
         myH3.textContent = `Número de visita: ${localStorage.getItem('visits-counter')}`;

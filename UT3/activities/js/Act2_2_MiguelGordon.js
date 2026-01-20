@@ -17,7 +17,7 @@
         sessionStorage.setItem('visits-counter',1);
         myH3.textContent = `Número de visita: 1`;
     } else {
-        let visitsNumber = Number(sessionStorage.getItem('visits-counter'));
+        let visitsNumber = parseInt(sessionStorage.getItem('visits-counter'));
         visitsNumber++;
         sessionStorage.setItem('visits-counter',visitsNumber);
         myH3.textContent = `Número de visita: ${sessionStorage.getItem('visits-counter')}`;
