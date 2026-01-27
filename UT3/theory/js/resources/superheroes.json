@@ -39,6 +39,17 @@
         "Interdimensional travel"
       ],
       "id": "fccb"
+    },
+    {
+      "name": "Mr. Coronel Skills",
+      "age": 39,
+      "secretIdentity": "Miguel Gordon",
+      "powers": [
+        "Linux",
+        "Windows",
+        "Packet Tracert"
+      ],
+      "id": "1b4c"
     }
   ]
 }
