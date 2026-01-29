@@ -85,5 +85,33 @@
     //USO DE CORS ANYWHERE; PODER ACCEDER A IMÁGENES DE LA WEB QUE ESTÁN PROTEGIDAS
     const corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
 
-    //AÑADIR EJEMPLO POST, PUT, PATCH, DELETE
+    //FETCH CON POST
+    let myRequest = 'https://localhost:3000/members';
+    fetch(myRequest, {
+        method: 'POST',
+        body: JSON.stringify({
+            id: 1,
+            name: 'Miguel',
+            age: 20
+        })
+    });   
+    //FETCH CON PUT - REEMPLAZA TODO LO QUE HABÍA (SOLO EXISTIRÁ EL CAMPO NOMBRE EN ESTE CASO)
+    let myRequest2 = 'https://localhost:3000/members/1';
+    fetch(myRequest2, {
+        method: 'PUT',
+        body: JSON.stringify({
+            name: 'Miguel Gordon'
+        })
+    });
+    //FETCH CON PATCH - SOLO ACTUALIZA LOS CAMPOS MANDADOS (MANTIENE LOS CAMPOS NO MANDADOS)
+    fetch(myRequest2, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            name: 'Miguel Gordon'
+        })
+    });
+    //FETCH CON DELETE
+    fetch(myRequest2, {
+        method: 'DELETE'
+    });
 }
